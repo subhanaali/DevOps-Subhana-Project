@@ -1,0 +1,16 @@
+trigger:
+- main
+
+pool:
+  name: Default
+
+steps:
+- task: DockerInstaller@0
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerHubConnection'
+    repository: 'subhanaali/subhana-sample-chat-app'
+    command: 'buildAndPush'
+    Dockerfile: 'chat-example/Dockerfile'
+    tags: 'latest'
